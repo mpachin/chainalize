@@ -1,0 +1,15 @@
+.git*
+.gitignore
+.npmignore
+.babelrc
+.editorconfig
+
+node-modules/
+gifs/
+src/
+test/
+examples/
+coverage/
+
+package-lock.json
+CHANGELOG.md
