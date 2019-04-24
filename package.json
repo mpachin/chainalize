@@ -1,6 +1,6 @@
 {
   "name": "chainalize",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Refactoring tool for global instances",
   "keywords": [
     "singleton",
@@ -11,11 +11,17 @@
   "author": "Misha Pachin <misha.pachin@gmail.com> (https://tech-agnostic.me/)",
   "license": "MIT",
   "scripts": {
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3"
+    "@babel/preset-env": "^7.4.3",
+    "jest": "^24.7.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpachin/chainalize.git"
   }
 }

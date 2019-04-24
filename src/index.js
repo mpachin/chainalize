@@ -32,11 +32,13 @@ const deepChaining = (
 
     // Circular dependency handling
     if (circularDependencies[depClassName]) {
-      const initializationSequence = Object.keys(circularDependencies).join(' > ');
+      const initializationSequence = Object.keys(circularDependencies)
+        .concat([linkClassName, depClassName])
+        .join(' > ');
 
       throw new Error(
         'chainalize: circular dependency found ' +
-        `[${linkClassName} - ${depClassName}]; ` +
+        `[${depClassName} - ${linkClassName}]; ` +
         `full initialization sequence: ${initializationSequence}`
       );
     }

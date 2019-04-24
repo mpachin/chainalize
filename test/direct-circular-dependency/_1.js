@@ -5,10 +5,6 @@ class _1 {
     this._2 = _2;
   }
 
-  log() {
-    console.log(this.getChain());
-  }
-
   getChain() {
     return `_1${this._2.getChain()}`;
   }
