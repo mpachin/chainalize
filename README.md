@@ -3,9 +3,10 @@
 > Refactoring tool for global instances
 
 ![npm](https://img.shields.io/npm/v/chainalize.svg?style=flat-square)
+![Travis (.org)](https://img.shields.io/travis/mpachin/chainalize.svg?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/mpachin/chainalize.svg?style=flat-square)
 
-`chainalize` is a small tool which helps you take control over ["singletons"](https://en.wikipedia.org/wiki/Singleton_pattern) in your application.
+`chainalize` is a small tool which helps you take control over [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) in your application.
 
 # Motivation
 
