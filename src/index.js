@@ -5,20 +5,30 @@ const deepChaining = (
   instances,
   LinkClass,
   linkClassName,
-  args,
+  globalArguments,
+  inputArguments,
 
   circularDependencies = {},
-  initializedClasses = {}
+  initializedClasses = {},
 ) => {
   // Instance already initialized
   if (initializedClasses[linkClassName]) {
     return;
   }
 
+  const linkClassArguments = Object.assign(
+    inputArguments[linkClassName]
+      ? {
+        [`${lowerCaseFirstLetter(linkClassName)}LocalArg`]: inputArguments[linkClassName],
+      }
+      : {},
+    globalArguments,
+  );
+
   // No dependencies found
   if (!LinkClass.dependencies) {
     const instanceName = lowerCaseFirstLetter(linkClassName);
-    instances[instanceName] = new LinkClass(args);
+    instances[instanceName] = new LinkClass(linkClassArguments);
     initializedClasses[linkClassName] = true;
     return;
   }
@@ -48,10 +58,11 @@ const deepChaining = (
       instances,
       DepClass,
       depClassName,
-      args,
+      globalArguments,
+      inputArguments,
 
       Object.assign(circularDependencies),
-      initializedClasses
+      initializedClasses,
     );
 
     const depInstanceName = lowerCaseFirstLetter(depClassName);
@@ -60,11 +71,18 @@ const deepChaining = (
 
   initializedClasses[linkClassName] = true;
   const instanceName = lowerCaseFirstLetter(linkClassName);
-  instances[instanceName] = new LinkClass(Object.assign({}, args, argsInstances));
+  instances[instanceName] = new LinkClass(Object.assign({}, linkClassArguments, argsInstances));
 };
 
-const chainalize = (classes, args) => {
+const chainalize = (classes, inputArguments = {}) => {
   const instances = {};
+  const globalArguments = {};
+
+  for (let argumentName in inputArguments) {
+    if (!classes[argumentName]) {
+      globalArguments[argumentName] = inputArguments[argumentName];
+    }
+  }
 
   for (let linkClassName in classes) {
     const LinkClass = classes[linkClassName];
@@ -73,7 +91,8 @@ const chainalize = (classes, args) => {
       instances,
       LinkClass,
       linkClassName,
-      args
+      globalArguments,
+      inputArguments,
     );
   }
 

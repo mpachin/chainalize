@@ -13,7 +13,7 @@ class _2 {
 }
 _2.dependencies = {
   _3,
-  _4
+  _4,
 };
 
 module.exports = _2;

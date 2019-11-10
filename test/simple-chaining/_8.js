@@ -14,7 +14,7 @@ class _8 {
 }
 _8.dependencies = {
   _3,
-  _4
+  _4,
 };
 
 module.exports = _8;

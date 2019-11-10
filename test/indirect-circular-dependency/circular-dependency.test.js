@@ -2,7 +2,7 @@ const _1 = require('./_1');
 const chainalize = require('../../src');
 
 const classes = {
-  _1
+  _1,
 };
 
 it('should throw an error if circular dependency indirect', () => {

@@ -5,7 +5,7 @@ const chainalize = require('../../src');
 
 describe('chaining with one input link class', () => {
   const classes = {
-    _1
+    _1,
   };
 
   const chain = chainalize(classes);
@@ -29,14 +29,26 @@ describe('chaining with multiple input link classes', () => {
   const classes = {
     _1,
     _7,
-    _8
+    _8,
   };
 
-  const chain = chainalize(classes, { testArgument: 'testArgument' });
+  const chain = chainalize(
+    classes,
+    {
+      testArgument: 'testArgument',
+      _1: 'first test argument',
+      _7: 'second test argument',
+    },
+  );
 
   it('classes inside of input hierarchy are defined ' +
     'and should have access to subsequent instances', () => {
     expect(chain._7.getChain()).toBe('_7_2_3_5_6_4');
     expect(chain._8.getChain()).toBe('_8_3_5_6_4 # testArgument');
+  });
+
+  it('classes should get their local arguments', () => {
+    expect(chain._1.getArg()).toBe('first test argument');
+    expect(chain._7.getArg()).toBe('second test argument');
   });
 });

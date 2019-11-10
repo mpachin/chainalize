@@ -10,7 +10,7 @@ class _2 {
   }
 }
 _2.dependencies = {
-  _1
+  _1,
 };
 
 module.exports = _2;
