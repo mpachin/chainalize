@@ -1,20 +1,13 @@
-const _3 = require('./_3');
-const _4 = require('./_4');
-
 class _8 {
-  constructor({ _3, _4, testArgument }) {
+  constructor(_3, localArgument, _4) {
     this._3 = _3;
     this._4 = _4;
-    this.testArgument = testArgument;
+    this.localArgument = localArgument;
   }
 
   getChain() {
-    return `_8${this._3.getChain()}${this._4.getChain()} # ${this.testArgument}`;
+    return `_8${this._3.getChain()}${this._4.getChain()} ${this.localArgument}`;
   }
 }
-_8.dependencies = {
-  _3,
-  _4,
-};
 
 module.exports = _8;
