@@ -1,7 +1,7 @@
 {
   "name": "chainalize",
-  "version": "1.1.1",
-  "description": "Refactoring tool for global instances",
+  "version": "2.0.0",
+  "description": "Small dependency injection tool",
   "keywords": [
     "dependency-injection",
     "inversion-of-control",
